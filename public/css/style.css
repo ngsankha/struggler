@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+  line-height: 2em;
+}
+
+.container {
+  width: 80%;
+  padding-top: 40px;
+}
+
+.credits {
+  font-size: 12px;
+}

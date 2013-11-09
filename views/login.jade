@@ -1,0 +1,21 @@
+!!! 5
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Mapvel
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='author', content='Sankha Narayan Guria')
+    meta(name='description', content='Maps + Travel = Awesome!')
+    //if lt IE 9
+      script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    link(href='css/style.css', rel='stylesheet')
+  body
+    .container
+      h1 Mapvel
+      span Maps + Travel = Awesome!
+      p
+        a(href='/auth/twitter'): button(type='submit', class='btn btn-primary') Sign in with Twitter
+      hr
+      span(class='credits') Created by <a href="http://sankhs.com">Sankha Narayan Guria</a>. Follow him <a href="https://twitter.com/sankha93">@sankha93</a>.
+  script(src='http://codeorigin.jquery.com/jquery-2.0.3.min.js')

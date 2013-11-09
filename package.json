@@ -13,7 +13,11 @@
   "dependencies": {
     "nko": "*",
     "express": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "jade": "*",
+    "passport": "*",
+    "passport-twitter": "*",
+    "connect-ensure-login": "*"
   },
   "engines": {
     "node": "0.10.x"
