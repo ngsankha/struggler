@@ -10,6 +10,7 @@ var app = express();
 
 var isProduction = (process.env.NODE_ENV === 'production');
 var port = (isProduction ? 80 : 8000);
+var host = (isProduction) ? "struggler.2013.nodeknockout.com" : "localhost:8000";
 
 var TWITTER_CONSUMER_KEY = "p31jCAXjIGZwUR8uwT42w";
 var TWITTER_CONSUMER_SECRET = "fM9w3kvtr8t35X4l1FSoclmJgwXESGfQOVcn9d4N4";
@@ -55,7 +56,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new TwitterStrategy({
     consumerKey: TWITTER_CONSUMER_KEY,
     consumerSecret: TWITTER_CONSUMER_SECRET,
-    callbackURL: "http://localhost:8000/auth/twitter/callback"
+    callbackURL: "http://" + host + "/auth/twitter/callback"
   }, function(token, tokenSecret, profile, done) {
     var user = profile;
     var entry = new Profile({id: profile.id,
