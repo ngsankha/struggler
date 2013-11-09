@@ -11,7 +11,9 @@
     "url": "git@github.com:nko4/struggler.git"
   },
   "dependencies": {
-    "nko": "*"
+    "nko": "*",
+    "express": "*",
+    "mongoose": "*"
   },
   "engines": {
     "node": "0.10.x"
