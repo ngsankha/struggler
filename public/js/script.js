@@ -4,8 +4,12 @@ var map = new GMaps({
     lng: 10
 });
 
+var lat, lng;
+
 GMaps.geolocate({
   success: function(position) {
+    lat = position.coords.latitude;
+    lng = position.coords.longitude;
     map.setCenter(position.coords.latitude, position.coords.longitude);
     map.addMarker({lat: position.coords.latitude,
                    lng: position.coords.longitude,
@@ -18,3 +22,19 @@ GMaps.geolocate({
     console.log("Your browser does not support geolocation");
   }
 });
+
+function shareReview() {
+    var review = $('#review').html();
+    $.post('/api/share', {text: review,
+                          lat: lat,
+                          lng: lng}, function(data) {
+                            if (data.done == 1) {
+                                $('#share').html("Shared!");
+                                $('#share').unbind('click');
+                                $('#map').hide();
+                                $('#review').hide();
+                            }
+                          }, 'json');
+}
+
+$('#share').bind('click', shareReview);

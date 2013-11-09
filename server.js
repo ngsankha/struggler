@@ -102,6 +102,28 @@ app.get('/login', function(req, res) {
   res.render('login');
 });
 
+app.post('/api/share', ensureLoggedIn('/login'), function(req, res) {
+  var lat = req.param('lat', null);
+  var lng = req.param('lng', null);
+  var text = req.param('text', null);
+  var entry = new Review({id: req.user.id,
+                          text: text,
+                          date: new Date()});
+  var location = new LocationReview({geo: [lat, lng]});
+  LocationReview.findOne({geo: [lat, lng]}).exec(function(err, existing) {
+      if (err || (existing == null)) {
+        handleError(err);
+        location.reviews = [entry];
+        location.save();
+        return;
+      }
+      existing.reviews.push(entry);
+      existing.save();
+    });
+  var response = {done: 1};
+  res.end(JSON.stringify(response));
+});
+
 app.get('/account',
   ensureLoggedIn('/login'),
   function(req, res) {
