@@ -1,13 +1,22 @@
 body {
-  text-align: center;
-  line-height: 2em;
+  padding-top: 50px;
 }
 
-.container {
-  width: 80%;
-  padding-top: 40px;
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
 }
 
 .credits {
   font-size: 12px;
+}
+
+#map {
+  height: 250px;
+}
+
+.lead {
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  height: 4em;
 }

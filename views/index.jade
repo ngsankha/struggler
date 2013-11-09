@@ -1,28 +1,49 @@
 !!! 5
 html(lang='en')
-  head
+head
     meta(charset='utf-8')
-    title Mapvel
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(name='author', content='Sankha Narayan Guria')
-    meta(name='description', content='Maps + Travel = Awesome!')
-    //if lt IE 9
-      script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='shortcut icon', href='../../docs-assets/ico/favicon.png')
+    title Mapvel
+    //
+       Bootstrap core CSS
     link(href='css/bootstrap.min.css', rel='stylesheet')
-    link(href='css/bootstrap-responsive.min.css', rel='stylesheet')
+    //
+       Custom styles for this template
     link(href='css/style.css', rel='stylesheet')
+    //
+       HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    //if lt IE 9
   body
+    .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#') Mapvel
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='#') #{username}
+            li
+              a(href='/logout') Logout
     .container
-      h1 Mapvel
-      span Register
-      form(method='post', action='#')
-        input(name='name', placeholder='Full Name', type='text')
+      .starter-template
+        h1 Share your experience
+        p.lead(contenteditable='true')
+          | Share some interesting stuff that happened to you here.
+
+        div#map
         br
-        input(name='email', placeholder='Email', type='text')
-        br
-        input(name='password', placeholder='Password', type='password')
-        br
-        button(type='submit', class='btn btn-primary') Register
-      hr
-      span(class='credits') Created by <a href="http://sankhs.com">Sankha Narayan Guria</a>. Follow him <a href="https://twitter.com/sankha93">@sankha93</a>.
-  script(src='http://codeorigin.jquery.com/jquery-2.0.3.min.js')
+        button#share(class='btn btn-lg btn-primary') Share
+    script(src='https://code.jquery.com/jquery-1.10.2.min.js')
+    script(src='js/bootstrap.min.js')
+    script(src='http://maps.google.com/maps/api/js?sensor=true')
+    script(src='js/gmaps.js')
+    script(src='js/script.js')

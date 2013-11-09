@@ -24,13 +24,28 @@ var ProfileSchema = new Schema({
   photo: {type: String, required: false}
 });
 
+var ReviewSchema = new Schema({
+  id: Number,
+  text: String,
+  date: Date,
+});
+
+var LocationReviewSchema = new Schema({
+  geo: {type: [Number], index: '2d'},
+  reviews: [ReviewSchema]
+});
+
 function handleError(err) {
   console.log("Error: " + err);
 }
 
 var Profile = mongoose.model('Profile', ProfileSchema);
+var Review = mongoose.model('Review', ReviewSchema);
+var LocationReview = mongoose.model('LocationReview', LocationReviewSchema);
+
 mongoose.connect('mongodb://localhost/nodeknockout', function (err) {
-  if (err) return handleError(err);
+  if (err)
+    return handleError(err);
 });
 
 app.configure(function() {
@@ -80,7 +95,7 @@ passport.use(new TwitterStrategy({
 
 app.get('/', ensureLoggedIn('/login'),
   function(req, res) {
-    res.render('index');
+    res.render('index', {username: req.user.username});
 });
 
 app.get('/login', function(req, res) {
