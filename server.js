@@ -98,6 +98,11 @@ app.get('/', ensureLoggedIn('/login'),
     res.render('index', {username: req.user.username});
 });
 
+app.get('/rants', ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('rants', {username: req.user.username});
+});
+
 app.get('/login', function(req, res) {
   res.render('login');
 });
@@ -117,11 +122,19 @@ app.post('/api/share', ensureLoggedIn('/login'), function(req, res) {
         location.save();
         return;
       }
+      console.log(existing);
       existing.reviews.push(entry);
       existing.save();
     });
   var response = {done: 1};
   res.end(JSON.stringify(response));
+});
+
+app.post('/api/rants', ensureLoggedIn('/login'), function(req, res) {
+  console.log(req.user.id);
+  LocationReview.find({id: req.user.id}).exec(function(err, existing) {
+    console.log(existing);
+  });
 });
 
 app.get('/account',
